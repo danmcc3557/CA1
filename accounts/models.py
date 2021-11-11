@@ -3,4 +3,4 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    location = models.TextField(null=True, blank=True)
+    location = models.CharField(max_length=255)
