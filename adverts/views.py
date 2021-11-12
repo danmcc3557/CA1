@@ -22,7 +22,7 @@ class AdvertUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         obj = self.get_object()
-        return obj.author == self.request.user
+        return obj.seller == self.request.user
 
 
 class AdvertDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

@@ -1,27 +1,33 @@
 {% extends 'base.html' %} 
- {% block title %}Adverts{% endblock title %} 
+{% block title %}Adverts{% endblock title %} 
 {% block content %} 
- 
   {% for advert in object_list %} 
-     <div class="card"> 
-       <div class="card-header"> 
+  <br>
+    <div class="card"> 
+      <div class="card-header"> 
         <span class="font-weight-bold">{{ advert.title }}</span> &middot; 
- 
-        <span class="text-bold">{{ advert.location }}</span><span class="text-muted"> | Seller: {{ advert.seller }} | Posted: {{ advert.date }}</span> 
- 
+        <span class="text-muted"> {{ advert.seller }} | {{advert.location }} | {{ advert.date }}</span> 
       </div> 
-       <div class="card-body"> 
-         {{ advert.body }} 
-      </div> 
- 
-      <div class="card-footer text-center text-muted"> 
+      <div class="card-body"> 
+        <p>{{ advert.body }}</p> 
+        {% if advert.price %}
+        <p>Asking Price {{ advert.price }}</p>
+        {% endif %}  
+        {% if user.is_authenticated %}
         <a href="{% url 'advert_edit' advert.pk %}">Edit</a> | 
-        <a href="{% url 'advert_delete' advert.pk %}">Delete</a> 
-</div> 
+        <a href="{% url 'advert_delete' advert.pk %}">Delete</a>
+        {% endif %}
+      </div>
+      <div class="card-footer"> 
+        {% for comment in advert.comments.all %} 
+          <p> 
+            <span class="font-weight-bold">{{ comment.author }} &middot;</span> 
+            {{ comment }} 
+          </p> 
+        {% endfor %} 
+      </div> 
+   </div> 
+   <br /> 
+ {% endfor %} 
+{% endblock content %} 
 
- 
-    </div> 
- 
-    <br /> 
-   {% endfor %} 
- {% endblock content %} 
