@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
@@ -14,19 +15,30 @@ class AdvertDetailView(DetailView):
     template_name = "advert_detail.html"
 
 
-class AdvertUpdateView(UpdateView):
+class AdvertUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Advert
     fields = ('title', 'body',)
     template_name = 'advert_edit.html'
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
 
-class AdvertDeleteView(DeleteView):
+
+class AdvertDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Advert
     template_name = 'advert_delete.html'
     success_url = reverse_lazy('advert_list')
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.seller == self.request.user
 
-class AdvertCreateView(CreateView):
+class AdvertCreateView(LoginRequiredMixin, CreateView):
     model = Advert
     fields = ('title', 'body', 'seller')
     template_name = 'advert_new.html'
+
+    def form_valid(self, form):
+        form.instance.seller = self.request.user
+        return super().form_valid(form)
