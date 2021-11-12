@@ -7,7 +7,7 @@
        <div class="card-header"> 
         <span class="font-weight-bold">{{ advert.title }}</span> &middot; 
  
-        <span class="text-muted">by {{ advert.author }} | {{ advert.date }}</span> 
+        <span class="text-bold">{{ advert.location }}</span><span class="text-muted"> | Seller: {{ advert.seller }} | Posted: {{ advert.date }}</span> 
  
       </div> 
        <div class="card-body"> 
@@ -15,10 +15,10 @@
       </div> 
  
       <div class="card-footer text-center text-muted"> 
- 
-        <a href="">Edit</a> | 
-         <a href="">Delete</a> 
-      </div> 
+        <a href="{% url 'advert_edit' advert.pk %}">Edit</a> | 
+        <a href="{% url 'advert_delete' advert.pk %}">Delete</a> 
+</div> 
+
  
     </div> 
  

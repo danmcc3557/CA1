@@ -1,13 +1,14 @@
 {% extends 'base.html' %} 
+ {% block title %}Home{% endblock title %} 
+{% block content %} 
  
-{% block title %}Home{% endblock title %} 
+  <br/> 
+   <div class="container-fluid text-sm-center p-5 bg-info text-white ">  
+     <h1 class="display-2">Welcome to Bizaar</h1> 
+    <p class="lead">The best way to buy and sell items online</p> 
  
-{% block content %} {% if user.is_authenticated %} 
-  Hi {{ user.username }}! 
-  <p><a href="{% url 'logout' %}">Log Out</a></p> 
-{% else %} 
-  <p>You are not logged in</p> 
-  <a href="{% url 'login' %}">Log In</a> | 
-  <a href="{% url 'signup' %}">Sign Up</a> 
-{% endif %} 
-{% endblock content %} 
+    <p><a class="btn btn-primary btn-lg" href="{% url 'advert_list' %}" 
+ 
+      role="button" >View all Adverts</a></p> 
+ </div>` 
+ {% endblock content %} 

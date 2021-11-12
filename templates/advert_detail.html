@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+ {% block content %} 
+   <div class="advert-entry"> 
+    <h2>{{ object.title }}</h2> 
+ 
+    <p>by {{ object.author }} | {{ object.date }}</p> 
+ 
+    <p>{{ object.body }}</p> 
+   </div> 
+  
+  <p><a href="{% url 'advert_edit' advert.pk %}">Edit</a> | 
+ 
+    <a href="{% url 'advert_delete' advert.pk %}">Delete</a></p> 
+ 
+  <p>Back to <a href="{% url 'advert_list' %}">All Adverts</a>.</p> 
+ {% endblock content %} 
