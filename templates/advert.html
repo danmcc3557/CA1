@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+{{ product.description|truncatewords:155 }}
+{% endblock %}
+{% block title %}
+{{ advert.name }} - Bizaar.com
+{% endblock %}
+{% block content %}
+<div class="row my_ad_row_class">
+<div class="mx-auto">
+<p><a href="home.html">Home</a> | {{advert.name}}</p>
+</div>
+<div class="container">
+<br>
+<div class="row">
+<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+<div style="min-width: 18rem;">
+<img src="{{advert.image.url}}"
+alt="{{advert.name}}">
+</div>
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+<div>
+<h1 class="my_ad_title">{{advert.name}}</h1>
+<p>£{{product.price}}</p>
+<p class="my_title">Advert Description</p>
+<p class="text-justify my_ad_text">{{advert.description}}</p>
+<a class="btn btn-secondary" href="">Make Offer</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
