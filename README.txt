@@ -9,7 +9,6 @@ To do:
 Features to be added:
 -CRUD
 -json
--authentication
 -images
 -permissions & authorisation (Mixins)
 
@@ -20,3 +19,5 @@ Daniel McCarthy:
 -Views, templates, urls
 -Static files/forms
 -Custom user model
+-mixins
+-authentication & permission mixins
