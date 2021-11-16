@@ -9,11 +9,10 @@ from django.urls import reverse
 class Advert(models.Model):
     title = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
-    #image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to='images', blank=True)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     price = models.FloatField(blank=False)
-    #image = models.ImageField(blank=False)
     seller = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
@@ -37,7 +36,7 @@ class Comment(models.Model):
         get_user_model(),
         on_delete=models.CASCADE,
     )
-
+ 
     def __str__(self):
         return self.comment
 

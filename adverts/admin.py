@@ -7,7 +7,7 @@ class CommentInLine(admin.TabularInline):
     extra = 0
 
 
-class ArticleAdmin(admin.ModelAdmin):
+class AdvertAdmin(admin.ModelAdmin):
     inline = [
         CommentInLine
     ]

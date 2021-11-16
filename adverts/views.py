@@ -17,7 +17,7 @@ class AdvertDetailView(DetailView):
 
 class AdvertUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Advert
-    fields = ('title', 'body',)
+    fields = ('title', 'location', 'body', 'image',  'price')
     template_name = 'advert_edit.html'
 
     def test_func(self):
@@ -36,7 +36,7 @@ class AdvertDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class AdvertCreateView(LoginRequiredMixin, CreateView):
     model = Advert
-    fields = ('title', 'location', 'body',  'price') #'image',
+    fields = ('title', 'location', 'body', 'image',  'price') 
     template_name = 'advert_new.html'
 
     def form_valid(self, form):
