@@ -9,9 +9,9 @@ from .views import (
 )
 
 urlpatterns = [
-    path('<int:pk>/edit/', AdvertUpdateView.as_view(), name='advert_edit'),
-    path('<int:pk>', AdvertDetailView.as_view(), name='advert_detail'),
-    path('<int:pk>/delete/', AdvertDeleteView.as_view(), name='advert_delete'),
+    path('<uuid:pk>/edit/', AdvertUpdateView.as_view(), name='advert_edit'),
+    path('<uuid:pk>', AdvertDetailView.as_view(), name='advert_detail'),
+    path('<uuid:pk>/delete/', AdvertDeleteView.as_view(), name='advert_delete'),
     path('/new/', AdvertCreateView.as_view(), name='advert_new'),
     path('', AdvertListView.as_view(), name='advert_list'),
 ]

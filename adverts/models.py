@@ -13,7 +13,7 @@ class Advert(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     price = models.FloatField(blank=False)
-    image = models.ImageField(blank=False)
+    #image = models.ImageField(blank=False)
     seller = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
