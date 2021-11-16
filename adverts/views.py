@@ -36,7 +36,7 @@ class AdvertDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class AdvertCreateView(LoginRequiredMixin, CreateView):
     model = Advert
-    fields = ('title', 'body', 'seller')
+    fields = ('title', 'body', 'image', 'price')
     template_name = 'advert_new.html'
 
     def form_valid(self, form):
